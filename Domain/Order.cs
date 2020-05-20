@@ -7,5 +7,6 @@ namespace Domain
     class Order
 
     {
+
     }
 }
