@@ -6,6 +6,5 @@ namespace Domain
 {
     class Product
     {
-
     }
 }
