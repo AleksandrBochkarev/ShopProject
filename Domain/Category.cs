@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain
 {
-    class Category
+   public  class Category
     {
         public int CategoryId { get; set; }
 

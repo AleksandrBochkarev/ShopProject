@@ -1,10 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain
 {
-    class OrderProducts
+    public class OrderProducts
     {
         public int OrderProductsId { get; set; }
 
@@ -15,5 +14,6 @@ namespace Domain
         public int ProductId { get; set; }
 
         public Product? Product { get; set; }
+   
     }
 }
