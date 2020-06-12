@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
@@ -14,6 +15,15 @@ namespace Domain
         public int ProductId { get; set; }
 
         public Product? Product { get; set; }
-   
+        public int Quantity { get; set; }
+
+        [Display(Name = "Unit Price ")]
+
+        public decimal UnitPrice { get; set; }
+
+        [Display(Name = "Total Price ")]
+
+        public decimal TotalPrice { get; set; }
+
     }
 }

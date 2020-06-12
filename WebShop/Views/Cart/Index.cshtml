@@ -1,0 +1,97 @@
+﻿@model Domain.Product
+@{
+    ViewBag.Title = "Cart";
+    Layout = "_Layout";
+} 
+@{
+    var cart = ViewBag.cartItems;
+    // var cartTotal = ViewData["cartTotal"];
+ }
+<h2>Cart</h2>
+
+
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="ibox">
+                        <div class="ibox-title">    
+                            @* <span class="pull-right">(<strong class="cartSize">@cart.Sum(x => x.Value);</strong>)items</span> *@
+                            <h5>Items in your cart</h5>
+                        </div>
+                         @foreach (  var item in cart)
+                         {
+                             <div id="cartContainer">
+                                 <div class="ibox-content" id="">
+                                     <div class="table-responsive">
+                                         <table class="table shoping-cart-table">
+                                             <tbody>
+                                             <tr>
+                                                 <td>
+                                                     <div class="cart-image">
+                                                           <img src="https://via.placeholder.com/150"/>
+                                                     </div>
+                                                 </td>
+                                                 <td class="desc">
+                                                     <h3><a class="text-navy">@item.Key.ProductName</a></h3>
+                                                     <p class="small">
+                                                         #description here
+                                                     </p>
+                                                     <div class="m-t-sm" id="@item.Key.ProductId">
+                                                    <label class="form-inline">
+                                                          <a asp-action="Delete" asp-controller="Cart" asp-route-id="@item.Key.ProductId" class="btn btn-danger btn-sm">Remove</a>
+                                                        </label>
+                                                     </div>
+                                                 </td>
+                                                 <td>
+                                                     <h6> @item.Value</h6>
+                                                 </td>
+                                                 <td>
+                                                     <h4>$@item.Key.ProductPrice</h4>
+                                                 </td>
+                                             </tr>
+                                             </tbody>
+                                         </table>
+                                     </div>
+                                 </div>
+                             </div>
+                         }
+                         <div class="ibox-content">
+                            <a asp-action="Index" asp-controller="Home" class="btn btn-white" ><i class="fa fa-arrow-left"></i>Continue shopping</a>
+                        </div>
+                    </div>
+                 </div>
+                <div class="col-md-3" id="cartBox">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>Cart Summary</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <span>Total</span>
+                            <h2 class="font-bold">
+                                <span id="cartTotal">$@ViewData["cartTotal"] </span>
+                            </h2>
+                            <hr>
+                            <div class="m-t-sm">
+                                <div class="btn-group">
+                                   <label class="form-inline">
+                                     <a asp-action="Checkout" asp-controller="Cart" class="btn btn-primary btn-sm" >Checkout</a>
+                                   </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="alert" class="alert fade">
+                <button type="button" class="close">&times;</button>
+                <h4 class="alert-heading" style="text-align: center"></h4>
+                <p id="response">alaert</p>
+            </div>
+        </div>
+        
+        <form asp-action="Checkout" id="checkout">
+ 
+         </form>
+    </div>

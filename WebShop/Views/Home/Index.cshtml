@@ -1,8 +1,47 @@
-﻿@{
+﻿@model IEnumerable<Domain.Product>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<div class="container">
+    <form class="form-inline" method="get" id="searchForm">
+    
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="searchField" class="sr-only"> </label>
+            <input class="form-control " id="searchField"    placeholder="Search" >
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" id="search">Search</button>
+    </form>
 
+</div>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="card-deck">    
+        @foreach (var  product in Model)
+        {
+            <div class="col-md-4 mt-4">
+                <div class="card order-card" >
+                    <div class="card-block">
+                        <div class="product-imitation">
+                            <img src="https://via.placeholder.com/150"/>
+                        </div>
+                        
+                        <h5 class="card-title">@product.ProductName</h5>
+                        <p class="small">
+                            
+                        </p>
+                        
+                        <p class="font-weight-bold">@product.Category.CategoryName</p>
+                        <div class="product-desc">
+                            <span class="product-price">
+                                $@product.ProductPrice
+                            </span>
+                        </div>    
+                        <label class="form-inline">
+                            <a asp-action="Add" asp-controller="Cart" asp-route-id="@product.ProductId" class="btn btn-primary btn-sm">Add</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
