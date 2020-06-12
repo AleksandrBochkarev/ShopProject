@@ -10,9 +10,9 @@ namespace Services
     public class CartService : ICartService<Product>
     {
         private Dictionary<Product, int> _cart = new Dictionary<Product, int>();
-        private AppDbContext _context;
+        private ApplicationDbContext _context;
 
-        public CartService(AppDbContext context)
+        public CartService(ApplicationDbContext context)
         {
             _context = context;
         }

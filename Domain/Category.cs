@@ -11,7 +11,7 @@ namespace Domain
 
 
         [MinLength(4)] [MaxLength(12)]
-
+        [Display(Name = "Category Name")]
         public string CategoryName { get; set; }
 
         public ICollection<CategoryProducts>? CategoryProducts { get; set; }
