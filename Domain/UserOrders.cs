@@ -1,4 +1,4 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain
 {
@@ -11,8 +11,10 @@ namespace Domain
 
         public Order? Order { get; set; }
 
-        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public int Id { get; set; }
 
         public User? User { get; set; }
+
     }
 }
